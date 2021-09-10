@@ -1,0 +1,38 @@
+version: "3"
+networks:
+  gomerch:
+
+services:
+  # Build postgres for local usage
+  postgres:
+    build: ./infrastructure/postgres
+    networks:
+      - gomerch
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 123456
+
+  # Launch adminer
+  adminer:
+    image: adminer
+    depends_on:
+      - postgres
+    networks:
+      - gomerch
+    restart: always
+    ports:
+      - 8080:8080
+
+  # Build gomerch webapp
+  gomerch:
+    depends_on:
+      - postgres
+    networks:
+      - gomerch
+    build: ./
+    environment:
+      POSTGRES_CONNECTION_STRING: "postgres://postgres:123456@postgres/gomerch?sslmode=disable"
+    ports:
+      - 8000:8000

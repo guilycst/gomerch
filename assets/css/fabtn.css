@@ -1,0 +1,33 @@
+.fabtn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    user-select: none;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+  }
+  .fabtn-container:hover {
+    height: 100%;
+  }
+  .fabtn-container .fabtn {
+    position: relative;
+    height: 70px;
+    width: 70px;
+    background-color: #9c27b0;
+    border-radius: 50%;
+    z-index: 2;
+  }
+  .fabtn-container .fabtn .fabtn-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+  .fabtn-container .fabtn .fabtn-content .material-icons {
+    color: white;
+    font-size: 48px;
+  }

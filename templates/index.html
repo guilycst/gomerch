@@ -1,0 +1,65 @@
+{{define "Index"}}
+{{template "_head"}}
+
+<body>
+    {{template "_nav"}}
+    {{template "_title"}}
+    <div class="main main-raised">
+        <div class="container">
+            <div class="section text-left">
+                <div>
+                    <h3 class="text-left font-weight-bold">Products</h3>
+                </div>
+                <div>
+                    <table class="table table-striped table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{range .}}
+                            <tr>
+                                <td>{{.Name}}</td>
+                                <td>{{.Description}}</td>
+                                <td>$ {{.Price}}</td>
+                                <td>{{.Amount}}</td>
+                                <td>
+                                    <!-- Edit button -->
+                                    <a href="/edit?id={{.Model.ID}}" class="btn btn-success btn-link"
+                                        data-toggle="tooltip" data-placement="top" title="Edit product"><i
+                                            class="material-icons">edit</i></a>
+                                    <!-- Delete button -->
+                                    <button onclick="openDeleteConfirmation('{{.Model.ID}}','{{.Name}}')"
+                                        class="btn btn-danger btn-link" data-toggle="tooltip" data-placement="top"
+                                        title="Delete product"></a><i class="material-icons">delete</i></button>
+                                </td>
+                            </tr>
+                            {{end}}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Floating action button -->
+                <div class="fabtn-container">
+                    <div class="fabtn shadow">
+                        <div class="fabtn-content">
+                            <a href="/new" role="button" class="fabtn-content" data-toggle="tooltip"
+                                data-placement="top" title="Add new product">
+                                <i class="material-icons">add</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Delete button confirmation modal -->
+    {{template "_deleteModal"}}
+</body>
+
+</html>
+{{end}}

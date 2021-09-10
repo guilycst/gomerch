@@ -1,0 +1,59 @@
+{{define "New"}}
+{{template "_head"}}
+
+<body>
+    {{template "_nav"}}
+    {{template "_title"}}
+    <div class="main main-raised">
+        <div class="container">
+            <div class="section text-left">
+                <h1 class="display-5">New product</h1>
+                <p class="lead">Fill product details</p>
+                <form method="POST" action="insert">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="nome">Name:</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="descricao">Description:</label>
+                                <input type="text" name="description" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="price">Price</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3">$</span>
+                                </div>
+                                <input type="number" class="form-control" name=price step="1.00" id="price"
+                                    aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="quantidade">Amount:</label>
+                                <input type="number" name="amount" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-secondary" href="/home">Go back</a>
+                    <button type="submit" value="save" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+{{end}}
